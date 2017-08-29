@@ -31,10 +31,10 @@ RUN set -x \
     && mkdir -p  /home/$NB_USER/.pyenv \
     && mkdir -p /home/$NB_USER/tmp 
     
-ENV TMPDIR=/home/$NB_USER/tmp
-ENV PYENV_ROOT="/home/$NB_USER/.pyenv"   
-ENV PATH="$PYENV_ROOT/libexec/:$PATH" 
-ENV PATH="$PYENV_ROOT/shims/:$PATH" 
+ENV TMPDIR /home/$NB_USER/tmp
+ENV PYENV_ROOT "/home/$NB_USER/.pyenv"   
+ENV PATH "$PYENV_ROOT/libexec/:$PATH" 
+ENV PATH "$PYENV_ROOT/shims/:$PATH" 
     
 RUN set -x \
     && pyenv init  \
