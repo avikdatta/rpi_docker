@@ -37,7 +37,7 @@ ENV PATH="$PYENV_ROOT/libexec/:$PATH"
 ENV PATH="$PYENV_ROOT/shims/:$PATH" 
     
 RUN set -x \
-    && eval "$(pyenv init -)"  \
+    && pyenv init  \
     && pyenv install 3.5.2     \
     && pyenv global 3.5.2      \
     && pip install \
