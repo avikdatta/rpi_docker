@@ -28,7 +28,7 @@ RUN apt-get update && apt-get install -y \
 RUN useradd -m -s /bin/bash -N -u $NB_UID $NB_USER 
 
 RUN set -x \
-    && mkdir -p  /home/$NB_USER/.pyenv \
+    && git clone https://github.com/yyuu/pyenv.git /home/$NB_USER/.pyenv \
     && mkdir -p /home/$NB_USER/tmp 
     
 ENV TMPDIR /home/$NB_USER/tmp
@@ -37,10 +37,10 @@ ENV PATH "/home/$NB_USER/.pyenv/libexec/:$PATH"
 ENV PATH "/home/$NB_USER/.pyenv/shims/:$PATH" 
     
 RUN set -x \
-    && /home/pi/.pyenv/libexec/pyenv init  \
-    && /home/pi/.pyenv/libexec/pyenv install 3.5.2     \
-    && /home/pi/.pyenv/libexec/pyenv global 3.5.2      \
-    && /home/pi/.pyenv/shims/pip install \
+    && pyenv init  \
+    && pyenv install 3.5.2     \
+    && pyenv global 3.5.2      \
+    && pip install \
         cython     \
         ipython    \
         numpy      \
