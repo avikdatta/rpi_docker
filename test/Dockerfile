@@ -10,6 +10,9 @@ RUN apt-get update && apt-get install -y git
 
 RUN useradd -m -s /bin/bash -N -u $NB_UID $NB_USER 
 
+RUN set -x \
+    && mkdir -p  /home/$NB_USER/.pyenv
+    
 USER $NB_USER
 WORKDIR /home/$NB_USER
 
