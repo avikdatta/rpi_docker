@@ -33,14 +33,14 @@ RUN set -x \
     
 ENV TMPDIR /home/$NB_USER/tmp
 ENV PYENV_ROOT "/home/$NB_USER/.pyenv"   
-ENV PATH "$PYENV_ROOT/libexec/:$PATH" 
-ENV PATH "$PYENV_ROOT/shims/:$PATH" 
+ENV PATH "/home/$NB_USER/.pyenv/libexec/:$PATH" 
+ENV PATH "/home/$NB_USER/.pyenv/shims/:$PATH" 
     
 RUN set -x \
-    && pyenv init  \
-    && pyenv install 3.5.2     \
-    && pyenv global 3.5.2      \
-    && pip install \
+    && /home/pi/.pyenv/libexec/pyenv init  \
+    && /home/pi/.pyenv/libexec/pyenv install 3.5.2     \
+    && /home/pi/.pyenv/libexec/pyenv global 3.5.2      \
+    && /home/pi/.pyenv/shims/pip install \
         cython     \
         ipython    \
         numpy      \
