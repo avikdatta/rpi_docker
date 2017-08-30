@@ -39,19 +39,21 @@ ENV PATH "/home/$NB_USER/.pyenv/shims/:$PATH"
 RUN set -x \
     && eval "$(pyenv init -)"  \
     && pyenv install 3.5.2     \
-    && pyenv global 3.5.2      \
-    && pip install \
-        cython     \
-        ipython    \
-        numpy      \
-        scipy      \
-        sklearn    \
-        pandas     \
-        matplotlib \
-        seaborn    \
-        jupyter    \
-        pymysql    \
-        sqlalchemy
+    && pyenv global 3.5.2      
+     
+RUN set -x \
+    &&  pip install    \
+            cython     \
+            ipython    \
+            numpy      \
+            scipy      \
+            sklearn    \
+            pandas     \
+            matplotlib \
+            seaborn    \
+            jupyter    \
+            pymysql    \
+            sqlalchemy
        
 RUN set -x \
      && chown -R $NB_USER /home/$NB_USER/.pyenv 
