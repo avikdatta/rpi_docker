@@ -37,7 +37,7 @@ ENV PATH "/home/$NB_USER/.pyenv/libexec/:$PATH"
 ENV PATH "/home/$NB_USER/.pyenv/shims/:$PATH" 
     
 RUN set -x \
-    && pyenv init  \
+    && eval "$(pyenv init -)"  \
     && pyenv install 3.5.2     \
     && pyenv global 3.5.2      \
     && pip install \
@@ -50,7 +50,8 @@ RUN set -x \
         matplotlib \
         seaborn    \
         jupyter    \
-        picamera
+        pymysql    \
+        sqlalchemy
        
 RUN set -x \
      && chown -R $NB_USER /home/$NB_USER/.pyenv 
