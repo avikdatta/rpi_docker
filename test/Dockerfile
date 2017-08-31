@@ -37,26 +37,11 @@ ENV PATH "/home/$NB_USER/.pyenv/libexec/:$PATH"
 ENV PATH "/home/$NB_USER/.pyenv/shims/:$PATH" 
     
 RUN set -x \
-    && eval "$(pyenv init -)"  \
+    && eval "$(pyenv init -)" > /home/$NB_USER/.bashrc  \
     && pyenv install 3.5.2     \
     && pyenv global 3.5.2      
      
-RUN set -x \
-    &&  pip install    \
-            cython     \
-            ipython    \
-            numpy      \
-            scipy      \
-            sklearn    \
-            pandas     \
-            matplotlib \
-            seaborn    \
-            jupyter    \
-            pymysql    \
-            sqlalchemy
-       
-RUN set -x \
-     && chown -R $NB_USER /home/$NB_USER/.pyenv 
+RUN set -x chown -R $NB_USER /home/$NB_USER/.pyenv 
      
 USER $NB_USER
 
@@ -64,4 +49,7 @@ WORKDIR /home/$NB_USER
 
 USER root
 RUN [ "cross-build-end" ]
+
 USER $NB_USER
+ENV PATH "/home/$NB_USER/.pyenv/libexec/:$PATH" 
+ENV PATH "/home/$NB_USER/.pyenv/shims/:$PATH" 
